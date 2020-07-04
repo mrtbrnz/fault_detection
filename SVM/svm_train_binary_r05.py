@@ -33,37 +33,38 @@ def add_time_history_0(X,steps_added):
             X_added_feat[:,(i * num_steps): ((i+1) * num_steps)]= v_new
     return X_added_feat
 
-# Adds measurements of previous n_step - 1 time steps. 
+
 def add_time_history_1(X,y,n_step=3):
-   time_len = X.shape[0]
-   column_len = X.shape[1]
+    '''X[0] = Ax0Ay0Az0Gx0Gy0Gz0Ax1Ay1Az1Gx1Gy1Gz1...'''
+    time_len= X.shape[0] #-n_step
+    column_len = X.shape[1]
 
-   xx = np.zeros((time_len,column_len * n_step))
+    xx=np.zeros((time_len,column_len*n_step))
 
-   for i in range(n_step,time_len):
-       for j in range(n_step):
-           xx[i,j*column_len:(j+1)*column_len] = X[i-j]
+    for i in range(n_step, time_len):
+        for j in range(n_step):
+            xx[i,j*column_len:(j+1)*column_len] = X[i-n_step+j]
+            
+    xx = xx[n_step:X.shape[0],:]
+    yy = y[n_step:]
+    
+    return xx,yy
 
-   xx = xx[n_step:X.shape[0],:]
-   yy = y[n_step:]
-
-   return xx,yy
-
-# Adds measurements of previous n_step - 1 time steps. 
 def add_time_history_2(X,y,n_step=3):
-   time_len = X.shape[0]
-   column_len = X.shape[1]
+    '''X[0] = Ax0Ax1Ay0Ay1Az0Az1Gx0Gx1Gy0Gy1Gz0Gz1....'''
+    time_len = X.shape[0]
+    column_len = X.shape[1]
 
-   xx = np.zeros((time_len,column_len * n_step))
+    xx = np.zeros((time_len,column_len * n_step))
 
-   for i in range(n_step,time_len):
-       for j in range(column_len):
-           xx[i,j*n_step:(j+1)*n_step] = X[(i+1-n_step):(i+1),j]
+    for i in range(n_step,time_len):
+        for j in range(column_len):
+            xx[i,j*n_step:(j+1)*n_step] = X[(i+0-n_step):(i+0),j]
 
-   xx = xx[n_step:X.shape[0],:]
-   yy = y[n_step:]
+    xx = xx[n_step:X.shape[0],:]
+    yy = y[n_step:]
 
-   return xx,yy
+    return xx,yy
 
 # Selection of flight data file and aircraft id (ac_id) - required from the user
 # select the aircraft of interest in the filename.data
@@ -76,7 +77,7 @@ def main():
     filename = '../data/20_07_03__11_13_15_SD.data'
 
     # taking only the data variables of interest defined in the DATA class by passing 'fault' to data_type 
-    data = DATA(filename, ac_id, data_type='fault')
+    data = DATA(filename, ac_id, data_type='fault', sample_period=0.1)
     df_labelled = data.get_labelled_data()
 
     df_flight = df_labelled[1500:1830].copy()
@@ -103,7 +104,7 @@ def main():
   #  print(X_pre.shape)
     # X = X_pre
     # X = add_time_history_0(X_pre,steps_added = 3) 
-    X,y = add_time_history_2(X_pre,y,n_step= 3)
+    X,y = add_time_history_2(X_pre,y,n_step= 20)
    # print(X_feat_added.shape)
 
     # Train, Test, Validation Sets Splits
@@ -121,8 +122,7 @@ def main():
     #tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
     #                 'C': [1, 10, 100, 1000]},
     #                {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
-    tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
-                         'C': [1, 10, 100, 1000]}]
+    tuned_parameters = [{'kernel': ['rbf'], 'gamma': ['auto'], 'C': [1, 10, 100, 1000]}]
     score = 'f1'
 
     print("# Tuning hyper-parameters for %s" % score)
