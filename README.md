@@ -1,4 +1,8 @@
-# fault_detection
+# We are about to update the scripts and share more data as promised in DASC 2020 paper... 
+
+Please check out later
+
+
 Fault detection on real flight data using machine learning 
 
 
