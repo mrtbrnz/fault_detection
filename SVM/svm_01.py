@@ -3,8 +3,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
-import seaborn #plotting lib, but just adding makes the matplotlob plots better
+#import seaborn #plotting lib, but just adding makes the matplotlob plots better
 
+import sys
+sys.path.append('../pprz_data/') # this is in order to add the ../pprz_data directory to the python search path
 from pprz_data.pprz_data import DATA
 import numpy as np
 
@@ -26,7 +28,7 @@ def plot_all(data):
     mpl.style.use('seaborn')
     # fig=plt.figure(figsize=(19,7))
     # df_labelled.plot(y=['m1', 'alt'], figsize=(17,7));plt.show()
-    data.plot(subplots=True, figsize=(12,10));plt.show()
+    data.plot(subplots=True, figsize=(12,8));plt.show()
 
 def add_time_history(X,y,n_step=3):
     time_len= X.shape[0] #-n_step
@@ -46,12 +48,12 @@ def add_time_history(X,y,n_step=3):
 
 def main():
     ac_id = '9'
-    filename = '../data/jumper_2nd.data'
+    filename = '../data/Older_Flights/jumper_2nd.data'
     
     data = DATA(filename, ac_id, data_type='fault')
     # Labelled data can be built from the data class directly
     df_labelled = data.get_labelled_data()
-    df_labelled.plot(subplots=True, figsize=(17,25));plt.show()
+    df_labelled.plot(subplots=True, figsize=(12,8));plt.show()
     # df_labelled.describe()
     labeled_data = df_labelled[300:500]
     df_flight = labeled_data.copy()
