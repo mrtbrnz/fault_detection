@@ -1,0 +1,3 @@
+[submodule "pprz_data"]
+	path = pprz_data
+	url = https://github.com/mrtbrnz/pprz_data.git
