@@ -15,7 +15,7 @@ You can reach the paper from [this link.](https://hal.archives-ouvertes.fr/hal-0
 [![Screenshot](https://img.youtube.com/vi/hmDJsCBVJxY/0.jpg)](https://youtu.be/hmDJsCBVJxY)
 
 ## Quick-Start
-You can replicate the presented results of the paper by following this [notebook !](https://github.com/mrtbrnz/fault_detection/blob/master/SVM/SVM_implementation_as_in_paper.ipynb)
+You can replicate the presented results of the paper by following this [notebook !](https://github.com/mrtbrnz/fault_detection/blob/master/SVM/SVM_implementation_as_in_paper.ipynb) (Make sure to download it to run and use the existing folder tree in order to load the flight datas without issues.)
 
 
 ## Reference
@@ -33,7 +33,7 @@ If you find our work useful in your research, please consider citing :
 ```
 
 ## In case of problems
-Please open an issue or contact me at muratbronz (at) gmail (dot) com
+Please open an issue or contact me at : muratbronz (at) gmail (dot) com
 
 I will try to resolve the issue when I find time...
 
