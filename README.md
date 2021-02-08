@@ -1,9 +1,4 @@
-# All existing flight data are added, we are about to update the scripts... 
-
-Please check out again later
-
-
-Fault detection on real flight data using machine learning 
+# Fault detection on real flight data using machine learning 
 
 <!-- 
 Requires the "pprz_data" class to read and extract the paparazzi log files
@@ -12,8 +7,16 @@ git clone https://github.com/mrtbrnz/pprz_data
 pip3 install .
  -->
 
-## Paper
+## Read the Paper
 You can reach the paper from [this link.](https://hal.archives-ouvertes.fr/hal-03018053)
+
+
+## Watch the Video
+[![Screenshot](https://img.youtube.com/vi/hmDJsCBVJxY/0.jpg)](https://youtu.be/hmDJsCBVJxY)
+
+## Quick-Start
+You can replicate the presented results of the paper by following this [notebook !](https://github.com/mrtbrnz/fault_detection/blob/master/SVM/SVM_implementation_as_in_paper.ipynb)
+
 
 ## Reference
 If you find our work useful in your research, please consider citing :
@@ -29,5 +32,8 @@ If you find our work useful in your research, please consider citing :
 }
 ```
 
-## Video
-[![Screenshot](https://img.youtube.com/vi/hmDJsCBVJxY/0.jpg)](https://youtu.be/hmDJsCBVJxY)
+## In case of problems
+Please open an issue or contact me at muratbronz (at) gmail (dot) com
+
+I will try to resolve the issue when I find time...
+
