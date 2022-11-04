@@ -15,7 +15,13 @@ You can reach the paper from [this link.](https://hal.archives-ouvertes.fr/hal-0
 [![Screenshot](https://img.youtube.com/vi/hmDJsCBVJxY/0.jpg)](https://youtu.be/hmDJsCBVJxY)
 
 ## Quick-Start
-You can replicate the presented results of the paper by following this [notebook !](https://github.com/mrtbrnz/fault_detection/blob/master/SVM/SVM_implementation_as_in_paper.ipynb) (Make sure to download it to run and use the existing folder tree in order to load the flight data without issues.)
+First clone the git repository :
+``` git clone --recursive https://github.com/mrtbrnz/fault_detection.git```
+Make sure that the pprz_data submodule is also cloned !
+Then go into the pprz_data folder and install it :
+``` cd pprz_data && pip3 install . ```
+
+Now you can replicate the presented results of the paper by following this [notebook !](https://github.com/mrtbrnz/fault_detection/blob/master/SVM/SVM_implementation_as_in_paper.ipynb) (Make sure to download it to run and use the existing folder tree in order to load the flight data without issues.)
 
 
 ## Reference
